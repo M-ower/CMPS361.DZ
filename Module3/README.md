@@ -1,64 +1,61 @@
-# CMPS 361 - Module 3
+CMPS 361 - Module 3
+Module 3 Overview
 
-## Module 3
+For Module 3, I worked on connecting PHP with PostgreSQL and connecting PHP to the API that I created in CMPS 262.
 
-For this module, I worked on connecting PHP with PostgreSQL and connecting PHP to the API I created in CMPS 262.
+1. PostgreSQL Database Driver
 
-## 1. PostgreSQL Database Driver
+At first, PHP was not able to use the PostgreSQL database driver correctly.
 
-At first, PHP was not able to connect to PostgreSQL because the PostgreSQL driver was not enabled correctly.
-
-I checked my PHP configuration and updated my `php.ini` file. I changed the extension directory and enabled the PostgreSQL extensions.
-
-```ini
+I checked my PHP configuration and found that the PostgreSQL extensions needed to be enabled. I updated my php.ini file and added the correct extension directory and PostgreSQL extensions.
 extension_dir = "C:\php-8.5.10\ext"
 extension=pdo_pgsql
 extension=pgsql
-```
 
-After making the changes, I tested the connection and it worked successfully.
+After making these changes, I tested the PostgreSQL connection and it worked successfully.
 
-I also included a video showing the changes I made and the PostgreSQL connection working.
+I also created check_pgsql.php to check if the PostgreSQL PDO driver was loaded.
 
-## 2. Connecting PHP to My CMPS 262 API
+I recorded a video showing the changes I made and the PostgreSQL connection working.
 
-For this part, I connected my PHP program to the API I created in CMPS 262.
+2. Connecting PHP to My CMPS 262 API
+
+For the second part of the module, I connected my PHP program to the API that I created in CMPS 262.
 
 The API endpoint I used was:
 
-```text
+
 http://localhost:5000/api/v1/car_parts
-```
 
-I used PHP cURL in `api2.php` to connect to the API and receive the data.
 
-The API successfully returned my car parts information, including the name, category, price, stock quantity, and other information.
+I used PHP cURL in api2.php to connect to the API and receive the data.
+
+The API successfully returned information from my car parts database, including the part name, category, price, stock quantity, sold count, view count, and creation date.
 
 The connection works like this:
 
-```text
+
 PHP api2.php
       ↓
-CMPS 262 API
+CMPS 262 Express API
       ↓
 PostgreSQL Database
       ↓
 Car Parts Data
-```
+3. API Results
 
-## 3. API Results
+The PHP API connection worked successfully and returned the car parts data.
 
-The screenshot below shows the results from my PHP API connection.
+The screenshot below shows the results from api2.php.
 
-![API Results](api-results.png)
 
-## Files
 
-* `api2.php` - Connects PHP to my CMPS 262 API.
-* `conn.php` - Tests the PHP connection to PostgreSQL.
-* `check_pgsql.php` - Checks if the PostgreSQL PDO driver is loaded.
-* `api-results.png` - Screenshot showing the API results.
 
-## Conclusion
+Module 3 Files
+api2.php - Connects PHP to my CMPS 262 API using cURL.
+conn.php - Tests the PHP connection to PostgreSQL.
+check_pgsql.php - Checks if the PostgreSQL PDO driver is loaded.
+Screenshot 2026-09-24 223533.png - Screenshot showing the API results.
+Conclusion
 
 I was able to fix the PostgreSQL driver issue and successfully connect my PHP program to the API from CMPS 262. The API returned the car parts data successfully.
